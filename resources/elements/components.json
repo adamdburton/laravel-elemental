@@ -1,0 +1,9 @@
+{
+    "name": "components",
+    "fields": [
+        {
+            "name": "type",
+            "type": ""
+        }
+    ]
+}
