@@ -1,3 +1,3 @@
 # The license
 
-Copyright (c) Click Digital Solutions <ops@clickdigitalsolutions.co.uk>
+Copyright (c) Click Digital Solutions <developers@clickdigitalsolutions.co.uk>

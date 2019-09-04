@@ -3,6 +3,7 @@
 namespace Click\Elemental;
 
 use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 
 class ElementalServiceProvider extends ServiceProvider
@@ -16,7 +17,7 @@ class ElementalServiceProvider extends ServiceProvider
     {
         // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'elemental');
 
-        $prefix = $this->app['config']->get('elemental.prefix');
+        $prefix = $this->getConfig()->get('elemental.prefix');
 
         $this->registerViews();
         $this->registerRoutes($prefix);
@@ -36,8 +37,6 @@ class ElementalServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../config/elemental.php' => config_path('elemental.php'),
         ], 'elemental.config');
-
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
 
     /**
@@ -74,6 +73,7 @@ class ElementalServiceProvider extends ServiceProvider
 
     /**
      * Registers routes
+     * @param $prefix
      */
     protected function registerRoutes($prefix)
     {
@@ -86,6 +86,7 @@ class ElementalServiceProvider extends ServiceProvider
                 'as' => 'elemental.api.'
             ], function(Router $router) {
                 $router->resource('element', 'Api\\ElementController');
+                $router->resource('property', 'Api\\PropertyController');
             });
 
             $router->get('{any?}')
@@ -103,5 +104,13 @@ class ElementalServiceProvider extends ServiceProvider
     protected function getRouter()
     {
         return $this->app['router'];
+    }
+
+    /**
+     * @return Config
+     */
+    protected function getConfig()
+    {
+        return $this->app['config'];
     }
 }

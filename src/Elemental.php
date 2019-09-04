@@ -35,15 +35,4 @@ class Elemental
     {
         return $this->propertyService;
     }
-
-    /**Mix.php
-     * @return View
-     */
-    public function app()
-    {
-        return view('elemental::app', [
-            'css' => \File::get(__DIR__ . '/../assets/app.css'),
-            'js' => \File::get(__DIR__ . '/../assets/app.js')
-        ]);
-    }
 }
