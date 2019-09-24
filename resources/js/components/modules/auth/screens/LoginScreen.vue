@@ -16,7 +16,7 @@
 </template>
 
 <script>
-    import api from '../../../../api';
+    import api from '~/api';
 
     export default {
         data: () => ({
@@ -47,7 +47,7 @@
                             this.$router.push({name: 'dashboard'});
                         }).catch(reason => {
                             this.$message.error(reason);
-                            this.loading = false;
+                     f       this.loading = false;
                         });
                     } else {
                         this.loading = false;
