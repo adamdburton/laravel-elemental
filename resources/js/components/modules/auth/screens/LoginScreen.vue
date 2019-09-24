@@ -1,7 +1,8 @@
 <template>
     <modal-layout>
         <el-form ref="form" :model="form" :rules="rules" :hide-required-asterisk="true">
-            <el-button type="text" size="small" @click="$router.push({name: 'auth.forgot'})">Forgot password?</el-button>
+            <el-button type="text" size="small" @click="$router.push({name: 'auth.forgot'})">Forgot password?
+            </el-button>
             <el-form-item label="Email" prop="email" required @keyup.enter.native="submit">
                 <el-input v-model="form.email"></el-input>
             </el-form-item>
@@ -47,7 +48,7 @@
                             this.$router.push({name: 'dashboard'});
                         }).catch(reason => {
                             this.$message.error(reason);
-                     f       this.loading = false;
+                            this.loading = false;
                         });
                     } else {
                         this.loading = false;

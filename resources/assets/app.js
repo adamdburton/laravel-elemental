@@ -3879,6 +3879,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     mode: {
@@ -4112,7 +4115,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../api */ "./resources/js/api.js");
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ~/api */ "./resources/js/api.js");
 //
 //
 //
@@ -4185,7 +4188,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../api */ "./resources/js/api.js");
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ~/api */ "./resources/js/api.js");
+//
 //
 //
 //
@@ -69411,9 +69415,9 @@ var render = function() {
           {
             staticClass: "max-w-full h-auto mx-auto",
             attrs: {
-              viewBox: "0 0 394 341",
+              viewBox: "0 0 394 394",
               width: "394",
-              height: "341",
+              height: "394",
               xmlns: "http://www.w3.org/2000/svg",
               "xmlns:xlink": "http://www.w3.org/1999/xlink"
             }
@@ -69432,18 +69436,20 @@ var render = function() {
               _c("path", {
                 attrs: {
                   fill: "#FFF",
-                  d: "M98.5 0h197L394 170.5 295.5 341h-197L0 170.5z"
+                  d:
+                    "M196.9465.5927l170.607 98.5L367.607 296l-170.5535 98.4073-170.607-98.5L26.393 99z"
                 }
               }),
               _vm._v(" "),
               _c("path", {
                 attrs: {
                   fill: "#000",
-                  d: "M108.25 16h178.5L376 171l-89.25 155h-178.5L19 171z"
+                  d:
+                    "M197.3902 19.324l154.5856 89.25-.2073 178.859-154.7927 89.609-154.5856-89.25.2073-178.859z"
                 }
               }),
               _vm._v(" "),
-              _c("g", { attrs: { transform: "translate(41 35)" } }, [
+              _c("g", { attrs: { transform: "rotate(30 60.8064 243.007)" } }, [
                 _c("mask", { attrs: { id: "b", fill: "#fff" } }, [
                   _c("use", { attrs: { "xlink:href": "#a" } })
                 ]),
@@ -69938,7 +69944,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("Forgot password?")]
+            [_vm._v("Forgot password?\n        ")]
           ),
           _vm._v(" "),
           _c(
@@ -86442,14 +86448,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************************************************!*\
   !*** ./resources/js/components/modules/auth/screens/LoginScreen.vue ***!
   \**********************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _LoginScreen_vue_vue_type_template_id_5264c079___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LoginScreen.vue?vue&type=template&id=5264c079& */ "./resources/js/components/modules/auth/screens/LoginScreen.vue?vue&type=template&id=5264c079&");
 /* harmony import */ var _LoginScreen_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LoginScreen.vue?vue&type=script&lang=js& */ "./resources/js/components/modules/auth/screens/LoginScreen.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _LoginScreen_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _LoginScreen_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -86479,7 +86486,7 @@ component.options.__file = "resources/js/components/modules/auth/screens/LoginSc
 /*!***********************************************************************************************!*\
   !*** ./resources/js/components/modules/auth/screens/LoginScreen.vue?vue&type=script&lang=js& ***!
   \***********************************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

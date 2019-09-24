@@ -1,13 +1,16 @@
 <template>
     <figure>
-        <svg class="max-w-full h-auto mx-auto" v-if="mode === 'square'" viewBox="0 0 394 341" width="394" height="341" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <svg class="max-w-full h-auto mx-auto" v-if="mode === 'square'" viewBox="0 0 394 394" width="394" height="394"
+             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <defs>
                 <path id="a" d="M78.25 0h156.5L313 135.5 234.75 271H78.25L0 135.5z"/>
             </defs>
             <g fill="none" fill-rule="evenodd">
-                <path fill="#FFF" d="M98.5 0h197L394 170.5 295.5 341h-197L0 170.5z"/>
-                <path fill="#000" d="M108.25 16h178.5L376 171l-89.25 155h-178.5L19 171z"/>
-                <g transform="translate(41 35)">
+                <path fill="#FFF"
+                      d="M196.9465.5927l170.607 98.5L367.607 296l-170.5535 98.4073-170.607-98.5L26.393 99z"/>
+                <path fill="#000"
+                      d="M197.3902 19.324l154.5856 89.25-.2073 178.859-154.7927 89.609-154.5856-89.25.2073-178.859z"/>
+                <g transform="rotate(30 60.8064 243.007)">
                     <mask id="b" fill="#fff">
                         <use xlink:href="#a"/>
                     </mask>
