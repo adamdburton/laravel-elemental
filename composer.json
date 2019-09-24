@@ -29,9 +29,7 @@
       "src/helpers.php"
     ],
     "psr-4": {
-      "Click\\Elemental\\": "src/",
-      "Click\\Elemental\\Database\\Seeds\\": "database/seeds/",
-      "Click\\Elemental\\Database\\Factories\\": "database/seeds/"
+      "Click\\Elemental\\": "src/"
     }
   },
   "autoload-dev": {

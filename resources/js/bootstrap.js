@@ -1,13 +1,14 @@
 import Vue from 'vue';
 
 import VueRouter from 'vue-router';
-import Notifications from 'vue-notification';
+
 import ElementUI from 'element-ui';
 import locale from 'element-ui/lib/locale/lang/en';
-// import 'element-ui/lib/theme-chalk/index.css';
 
+import {Laue} from 'laue';
+
+Vue.use(Laue);
 Vue.use(VueRouter);
-Vue.use(Notifications, { componentName: 'v-notifications'});
 Vue.use(ElementUI, {locale});
 
 const files = require.context('./', true, /\.vue$/i);

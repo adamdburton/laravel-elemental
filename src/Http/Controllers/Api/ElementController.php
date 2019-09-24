@@ -3,7 +3,8 @@
 namespace Click\Elemental\Http\Controllers\Api;
 
 use Click\Elemental\Http\Resources\ElementResource;
-use Click\Elemental\Services\ElementService;
+use Click\Elements\Models\Entity;
+use Click\Elements\Services\ElementService;
 use Illuminate\Http\Request;
 
 class ElementController
@@ -11,19 +12,15 @@ class ElementController
     /** @var ElementService */
     protected $service;
 
-    public function __construct(ElementService $service)
+    public function __construct()
     {
-        $this->service = $service;
+//        $this->service = $service;
     }
 
     public function index(Request $request)
     {
-        $query = $this->service->query();
+        $elements = Entity::with('properties')->type($request->get('type'))->get();
 
-        foreach($request->all() as $key => $value) {
-            $query->property($key, $value);
-        }
-
-        return ElementResource::collection($query->get());
+        return ElementResource::collection($elements);
     }
 }

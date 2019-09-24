@@ -1,12 +1,14 @@
 const mix = require('laravel-mix');
-
 require('laravel-mix-tailwind');
 
+mix.webpackConfig(require('./webpack.config'));
+
 mix.setResourceRoot('resources')
-    .setPublicPath('assets');
+    .setPublicPath('resources/assets');
 
-// mix.copy('node_modules/line-awesome/fonts', 'public/webfonts');
+mix.copy('node_modules/element-ui/lib/theme-chalk/fonts', 'resources/assets/fonts');
 
-mix.js('resources/js/app.js', 'assets')
-    .sass('resources/sass/app.scss', 'assets')
-    .tailwind();
+mix.js('resources/js/app.js', 'resources/assets')
+    .sass('resources/sass/app.scss', 'resources/assets')
+    .tailwind()
+    .version();

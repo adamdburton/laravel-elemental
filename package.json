@@ -2,7 +2,7 @@
     "name": "elemental",
     "version": "1.0.0",
     "description": "",
-    "main": "index.js",
+    "main": "app.js",
     "scripts": {
         "dev": "npm run development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
@@ -21,14 +21,17 @@
         "element-ui": "^2.12.0",
         "laravel-mix": "^4.1.2",
         "laravel-mix-tailwind": "^0.1.0",
-        "line-awesome": "^1.0.2",
+        "laue": "^0.2.1",
         "resolve-url-loader": "3.1.0",
         "sass": "^1.15.2",
         "sass-loader": "^7.1.0",
         "tailwindcss": "^1.1.2",
+        "tailwindcss-dark-mode": "^1.0.3",
         "vue": "^2.5.17",
-        "vue-notification": "^1.3.16",
         "vue-router": "^3.1.2",
         "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "vue-count-to": "^1.0.13"
     }
 }

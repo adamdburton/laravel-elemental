@@ -2,37 +2,20 @@
 
 namespace Click\Elemental;
 
-use Click\Elemental\Services\ElementService;
-use Click\Elemental\Services\PropertyService;
-use Illuminate\View\View;
+use Click\Elemental\Http\Resources\PropertyResource;
+use Click\Elements\Facades\Elements;
 
 class Elemental
 {
-    /** @var ElementService */
-    protected $elementService;
+    protected $modules = [];
 
-    /** @var PropertyService */
-    private $propertyService;
-
-    public function __construct(ElementService $elementService, PropertyService $propertyService)
+    public function __construct()
     {
-        $this->elementService = $elementService;
-        $this->propertyService = $propertyService;
+
     }
 
-    /**
-     * @return ElementService
-     */
-    public function elements()
+    public function registerModule(ServiceProvider $module)
     {
-        return $this->elementService;
-    }
-
-    /**
-     * @return PropertyService
-     */
-    public function properties()
-    {
-        return $this->propertyService;
+        $this->modules[$module->getModuleName()] = $module;
     }
 }
