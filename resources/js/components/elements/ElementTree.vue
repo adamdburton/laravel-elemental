@@ -25,6 +25,7 @@
 
             </div>
             <div class="opacity-0 group-hover:opacity-100">
+                <el-button type="text" @click="$router.push({name: 'content.edit'})">View Page</el-button>
                 <el-button type="text" @click="$router.push({name: 'content.edit'})">Edit</el-button>
                 <el-button type="text">Delete</el-button>
             </div>

@@ -1,7 +1,18 @@
 import dashboard from './dashboard';
-import elements from './elements';
+import modules from './modules';
+import fields from './fields';
 
 export default [
-    ...dashboard,
-    ...elements,
+    {
+        name: 'admin.index',
+        path: '/admin',
+        component: {
+            render (c) { return c('router-view') }
+        },
+        children: [
+            ...dashboard,
+            ...modules,
+            ...fields,
+        ]
+    }
 ]

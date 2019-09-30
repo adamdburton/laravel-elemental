@@ -3,8 +3,14 @@
 // Api routes.
 // All are prefixed by `config('elemental.prefix')`
 
-//Route::group(['prefix' => 'api', 'as' => 'api.'], function () {
-//    Route::resource('type', 'Api\\ElementTypeController');
-//    Route::resource('property', 'Api\\PropertyController');
-//    Route::resource('element', 'Api\\ElementController');
-//});
+use Click\Elemental\Http\Middleware\ValidateElementRequest;
+
+Route::group([
+    'prefix' => 'api',
+    'as' => 'api.',
+    'middleware' => ValidateElementRequest::class
+], function () {
+    Route::apiResource('element', 'Api\\ElementController');
+    Route::apiResource('elementType', 'Api\\ElementTypeController', ['only' => ['index', 'show']]);
+});
+

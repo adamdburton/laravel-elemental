@@ -7,6 +7,8 @@ const router = new VueRouter({
     routes: routes
 });
 
+// Check auth
+
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
         // this route requires auth, check if logged in
@@ -14,15 +16,17 @@ router.beforeEach((to, from, next) => {
         if (!auth.loggedIn()) {
             next({
                 path: '/login',
-                query: {redirect: to.fullPath}
+                query: {intended: to.fullPath}
             })
         } else {
-            next()
+            next();
         }
     } else {
-        next() // make sure to always call next()!
+        next();
     }
 });
+
+// Set page title
 
 const originalTitle = document.title;
 
@@ -36,6 +40,19 @@ router.beforeEach((to, from, next) => {
     }
 
     next();
+});
+
+// Load data for routes
+
+router.beforeEach((to, from, next) => {
+    if (typeof to.meta.data === 'function') {
+        to.meta.data(to).then(data => {
+            to.meta.$data = data;
+            next();
+        });
+    } else {
+        next();
+    }
 });
 
 export default router;

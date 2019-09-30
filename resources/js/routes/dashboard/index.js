@@ -1,4 +1,4 @@
-import Dashboard from '~modules/dashboard/screens/DashboardScreen';
+import Dashboard from '~/views/dashboard/DashboardScreen';
 
 export default [
     {

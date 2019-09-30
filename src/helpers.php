@@ -25,19 +25,6 @@ if (!function_exists('elemental_path')) {
     }
 }
 
-if (!function_exists('package_path')) {
-    /**
-     * @param string $path
-     * @return string
-     */
-    function package_path($path = '')
-    {
-        $dir = base_path(debug_backtrace()[1]['file']);
-
-        return rtrim(realpath($dir . '/../'), '/') . ($path ? '/' . ltrim($path, '/') : '');
-    }
-}
-
 if (!function_exists('elemental_asset')) {
     /**
      * @param string $path
@@ -59,5 +46,20 @@ if (!function_exists('elemental_mix')) {
         $manifest = json_decode(File::get(elemental_path('resources/assets/mix-manifest.json')), true);
 
         return new HtmlString(elemental_asset($manifest[$path]));
+    }
+}
+
+if (!function_exists('package_path')) {
+    /**
+     * @param string $path
+     * @return string
+     */
+    function package_path($path = '')
+    {
+        // TODO: Fix this to always return the BASE package path. Maybe check with existence of SP in namespace?
+
+        $dir = base_path(debug_backtrace()[1]['file']);
+
+        return rtrim(realpath($dir . '/../'), '/') . ($path ? '/' . ltrim($path, '/') : '');
     }
 }

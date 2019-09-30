@@ -3,17 +3,20 @@
 namespace Click\Elemental\Elements;
 
 use Click\Elements\Element;
-use Click\Elements\Schema;
+use Click\Elements\Schemas\ElementSchema;
 
-/**
- * Module Element definition.
- */
 class Module extends Element
 {
-    public function getDefinition(Schema $schema)
+    /**
+     * Define the schema for the FieldGroup element.
+     *
+     * @param ElementSchema $schema
+     * @return void
+     */
+    public function getDefinition(ElementSchema $schema)
     {
         $schema->string('name');
         $schema->string('description');
-        $schema->string('version');
+        $schema->string('author');
     }
 }

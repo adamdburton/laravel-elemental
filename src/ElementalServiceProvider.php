@@ -2,6 +2,9 @@
 
 namespace Click\Elemental;
 
+use Click\Elemental\Elements\Module;
+use Click\Elemental\Elements\FieldGroup;
+use Click\Elements\Facades\Elements;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -18,6 +21,7 @@ class ElementalServiceProvider extends ServiceProvider
 
         $this->registerViews();
         $this->registerRoutes();
+        $this->registerElements();
 
         if ($this->app->runningInConsole()) {
             $this->bootForConsole();
@@ -38,6 +42,12 @@ class ElementalServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../resources/assets' => public_path('vendor/click/elemental'),
         ]);
+    }
+
+    protected function registerElements()
+    {
+        Elements::register(Module::class);
+//        Elements::register(FieldGroup::class);
     }
 
     /**
