@@ -11,7 +11,7 @@ export default [
             description: 'Cras mattis consectetur purus sit amet fermentum.',
             icon: 'el-icon-box',
             data: async () => ({
-                modules: await api.get('modules')
+                modules: await api.get('module', true)
             })
         }
     }

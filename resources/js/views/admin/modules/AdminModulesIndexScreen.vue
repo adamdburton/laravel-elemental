@@ -9,7 +9,7 @@
         </template>
 
         <div class="bg-white dark:bg-dark-dark shadow-lg">
-            <element-table :elements="$route.meta.$data.modules" :properties="properties"></element-table>
+            <element-table :elements="$route.meta.$data.modules" :properties="$route.meta.$data.modules[0].properties"></element-table>
         </div>
     </section>
 </template>

@@ -4,7 +4,7 @@ namespace Click\Elemental\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ElementRequest extends FormRequest
+class ElementQueryRequest extends FormRequest
 {
     /**
      * @return array
@@ -16,6 +16,8 @@ class ElementRequest extends FormRequest
 
     protected function buildRules()
     {
+        $rules = [];
 
+        return $rules;
     }
 }

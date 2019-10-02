@@ -1,8 +1,6 @@
 import ContentIndexScreen from '~/views/content/screens/ContentIndexScreen'
 import ContentEditScreen from '~/views/content/screens/ContentEditScreen'
 
-import PageHeader from "~elements/PageHeader";
-
 export default [
     {
         name: 'content.index',

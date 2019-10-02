@@ -4,9 +4,9 @@
             <el-table-column type="selection"></el-table-column>
             <el-table-column v-for="property in properties"
                              v-bind="propsForColumn(property)"
-                             :key="property.property"
-                             :prop="property.property"
-                             :label="property.label">
+                             :key="property.key"
+                             :prop="'attributes.' + property.key"
+                             :label="property.meta.label">
             </el-table-column>
             <el-table-column label="" align="right" width="200">
                 <template slot="header" slot-scope="scope">
@@ -29,11 +29,11 @@
         props: {
             elements: {
                 type: Array,
-                default: []
+                default: () => ([])
             },
             properties: {
-                type: Array,
-                default: []
+                type: Object,
+                default: () => ({})
             }
         },
         data: () => ({
@@ -44,8 +44,8 @@
                 const search = this.search.toLowerCase();
 
                 return this.elements.filter(function (obj) {
-                    return Object.keys(obj).some(function (key) {
-                        return obj[key].toLowerCase().includes(search);
+                    return Object.keys(obj.attributes).some(function (key) {
+                        return obj.attributes[key].toLowerCase().includes(search);
                     })
                 });
             }

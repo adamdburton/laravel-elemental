@@ -2,39 +2,49 @@
 
 namespace Click\Elemental\Http\Resources;
 
+use Click\Elements\Element;
+use Click\Elements\Exceptions\ElementNotRegisteredException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ElementResource extends JsonResource
 {
     /**
+     * @var Element
+     */
+    public $resource;
+
+    /**
      * Transform the resource into an array.
      *
      * @param Request $request
      * @return array
+     * @throws ElementNotRegisteredException
      */
     public function toArray($request)
     {
-        $type =
-        $properties = ElementPropertyResource::collection($this->properties);
+        return $request->get('properties') ? $this->withProperties() : $this->withoutProperties();
+    }
 
-        $properties = $properties->mapWithKeys(function($property){dd($property);
-            $type = $property->type . '_value';
-            $property = str_replace('_', '', $property->property);
-            return [$property => $property->pivot->$type];
-        });
+    /**
+     * @return array
+     * @throws ElementNotRegisteredException
+     */
+    protected function withProperties()
+    {
+        return $this->resource->toJson();
+    }
 
-        dd($properties);
+    /**
+     * @return array
+     * @throws ElementNotRegisteredException
+     */
+    protected function withoutProperties()
+    {
+        $json = $this->resource->toJson();
 
-        $baseProperties = [
-            'uuid' => $this->uuid
-        ];
+        unset($json['properties']);
 
-        $dateProperties = [
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at
-        ];
-
-        return array_merge($baseProperties, $properties->all(), $dateProperties);
+        return $json;
     }
 }

@@ -1,12 +1,6 @@
-function randomly(doThis, orThat) {
-    return new Promise((resolve, reject) => {
-        if (Math.random() * 10 > 5) {
-            doThis(resolve, reject);
-        } else {
-            orThat(resolve, reject);
-        }
-    });
-}
+const axios = require('axios');
+
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 class Api {
     authenticate() {
@@ -27,47 +21,11 @@ class Api {
         });
     }
 
-    get(elementType, params) {
-        return randomly(resolve => resolve([
-            {
-                name: 'Commodo Vulputate',
-                description: 'Magna Venenatis Consectetur Porta Cras',
-            },
-            {
-                name: 'Purus Nibh Risus',
-                description: 'Elit Euismod Tellus Venenatis Mattis',
-            },
-            {
-                name: 'Mattis Risus',
-                description: 'Justo Quam Risus Vestibulum',
-            }
-        ]), resolve => resolve([
-            {
-                name: 'Commodo Vulputate 2',
-                description: 'Magna Venenatis Consectetur Porta Cras',
-            },
-            {
-                name: 'Purus Nibh Risus 2',
-                description: 'Elit Euismod Tellus Venenatis Mattis',
-            },
-            {
-                name: 'Mattis Risus 2',
-                description: 'Justo Quam Risus Vestibulum',
-            }
-        ]));
-    }
-
-    searchElements(params) {
-        return new Promise((resolve, reject) => {
-            resolve([
-                { "value": "vue", "link": "https://github.com/vuejs/vue" },
-                { "value": "element", "link": "https://github.com/ElemeFE/element" },
-                { "value": "cooking", "link": "https://github.com/ElemeFE/cooking" },
-                { "value": "mint-ui", "link": "https://github.com/ElemeFE/mint-ui" },
-                { "value": "vuex", "link": "https://github.com/vuejs/vuex" },
-                { "value": "vue-router", "link": "https://github.com/vuejs/vue-router" },
-                { "value": "babel", "link": "https://github.com/babel/babel" }
-            ].filter(link => params.search ? link.value.indexOf(params.search) > -1 : false));
+    async get(type, withProperties = false) {
+        let params = {properties: withProperties ? 1 : 0};
+        
+        return await axios.get('/elemental/api/elements/' + type, {params}).then(response => {
+            return response.data.data;
         });
     }
 }

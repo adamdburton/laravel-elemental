@@ -125,7 +125,7 @@
                     document.documentElement.classList.toggle('mode-dark');
                     localStorage.setItem('mode-dark', this.darkMode ? '1' : '0');
                 } else if (command === 'adminDashboard') {
-                    this.$router.push({name: 'admin.index'});
+                    this.$router.push({name: 'admin.dashboard.index'});
                 }
             },
             handleSearchFocus(event) {
