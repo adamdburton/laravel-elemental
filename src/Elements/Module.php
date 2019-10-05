@@ -3,7 +3,8 @@
 namespace Click\Elemental\Elements;
 
 use Click\Elements\Element;
-use Click\Elements\Exceptions\PropertyKeyInvalidException;
+use Click\Elements\Exceptions\Property\PropertyAlreadyDefinedException;
+use Click\Elements\Exceptions\Property\PropertyKeyInvalidException;
 use Click\Elements\Schemas\ElementSchema;
 
 class Module extends Element
@@ -13,7 +14,8 @@ class Module extends Element
      *
      * @param ElementSchema $schema
      * @return void
-     * @throws PropertyKeyInvalidException
+     * @throws PropertyAlreadyDefinedException
+     * @throws \Click\Elements\Exceptions\Property\PropertyKeyInvalidException
      */
     public function getDefinition(ElementSchema $schema)
     {
@@ -22,3 +24,11 @@ class Module extends Element
         $schema->string('author')->label('Author');
     }
 }
+
+Module::create([
+    'name' => 'ewfwe'
+]);
+
+Module::create([
+    'name' => 'ewfwe'
+]);

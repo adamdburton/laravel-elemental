@@ -46,7 +46,7 @@ class ElementalServiceProvider extends ServiceProvider
 
     protected function registerElements()
     {
-        Elements::register(Module::class);
+//        Elements::register(Module::class);
 //        Elements::register(FieldGroup::class);
     }
 

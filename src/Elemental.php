@@ -16,6 +16,6 @@ class Elemental
 
     public function registerModule(ServiceProvider $module)
     {
-        $this->modules[$module->getModuleName()] = $module;
+        $this->modules[$module->getAlias()] = $module;
     }
 }

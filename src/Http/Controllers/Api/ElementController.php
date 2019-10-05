@@ -2,12 +2,10 @@
 
 namespace Click\Elemental\Http\Controllers\Api;
 
-use Click\Elemental\Http\Requests\Api\ElementQueryRequest;
 use Click\Elemental\Http\Resources\ElementResource;
-use Click\Elements\Contracts\ElementContract;
 use Click\Elements\Elements;
-use Click\Elements\Exceptions\ElementNotInstalledException;
-use Click\Elements\Exceptions\ElementNotRegisteredException;
+use Click\Elements\Exceptions\Element\ElementNotInstalledException;
+use Click\Elements\Exceptions\Element\ElementNotRegisteredException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
@@ -24,13 +22,13 @@ class ElementController
     }
 
     /**
-     * @param ElementQueryRequest $request
+     * @param Request $request
      * @param string $type
      * @return AnonymousResourceCollection
      * @throws ElementNotInstalledException
      * @throws ElementNotRegisteredException
      */
-    public function index(ElementQueryRequest $request, string $type)
+    public function index(Request $request, string $type)
     {
         $elements = $this->elements->factory($type)->all();
 

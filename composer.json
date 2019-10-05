@@ -19,7 +19,7 @@
     "ext-json": "*"
   },
   "require-dev": {
-    "phpunit/phpunit": "~7.0",
+    "phpunit/phpunit": "~7.0|~8.0",
     "mockery/mockery": "^1.1",
     "orchestra/testbench": "~3.0",
     "sempro/phpunit-pretty-print": "^1.0"
@@ -49,11 +49,8 @@
   },
   "repositories": [
     {
-      "type": "path",
-      "url": "~/Packages/click/elements",
-      "options": {
-        "symlink": true
-      }
+      "type": "vcs",
+      "url": "git@git.clickdigitalsolutions.co.uk:internal/elements.git"
     }
   ]
 }
