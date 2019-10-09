@@ -1,5 +1,5 @@
-import Splash from '~/views/util/SplashScreen';
-import NotFound from '~/views/util/NotFoundScreen';
+import Splash from '~/pages/util/SplashScreen';
+import NotFound from '~/pages/util/NotFoundScreen';
 
 export default [
     {

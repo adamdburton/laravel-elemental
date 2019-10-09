@@ -1,4 +1,4 @@
-import AdminDashboardScreen from '~/views/admin/dashboard/AdminDashboardScreen'
+import AdminDashboardScreen from '~/pages/admin/dashboard/AdminDashboardScreen'
 
 export default [
     {

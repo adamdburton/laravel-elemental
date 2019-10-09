@@ -33,10 +33,10 @@
                 this.$refs.form.validate((valid) => {
                     if (valid) {
                         api.sendPasswordResetLink(this.form).then(() => {
-                            this.$notify.success('Password reset link sent to your email address!');
+                            this.$message.success('Password reset link sent to your email address!');
                             this.$router.push({name: 'auth.login'});
                         }).catch(reason => {
-                            this.$notify.error(reason);
+                            this.$message.error(reason);
                             this.loading = false;
                         });
                     } else {

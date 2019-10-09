@@ -3,12 +3,13 @@
 namespace Click\Elemental;
 
 use Click\Elemental\Contracts\ModuleContract;
-use Click\Elements\Facades\Elements;
+use Click\Elements\Elements;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Illuminate\Support\Str;
 use ReflectionClass;
+use ReflectionException;
 
 abstract class ServiceProvider extends BaseServiceProvider implements ModuleContract
 {
@@ -17,6 +18,9 @@ abstract class ServiceProvider extends BaseServiceProvider implements ModuleCont
 
     protected $commands = [];
 
+    /**
+     * @throws ReflectionException
+     */
     public function boot()
     {
         $this->mapRoutes();
@@ -32,6 +36,9 @@ abstract class ServiceProvider extends BaseServiceProvider implements ModuleCont
         $this->commands($this->commands);
     }
 
+    /**
+     * @throws ReflectionException
+     */
     protected function mapRoutes()
     {
         $namespace = $this->getControllerNamespace();
@@ -47,21 +54,37 @@ abstract class ServiceProvider extends BaseServiceProvider implements ModuleCont
         }
     }
 
+    /**
+     * @param array $paths
+     * @param null $groups
+     */
     protected function publishes(array $paths, $groups = null)
     {
         parent::publishes($paths, 'elemental.assets' . ($groups ? '.' . $groups : ''));
     }
 
+    /**
+     * @return string
+     */
     protected function getRouteNamespace()
     {
-        return $this->routeNamespace ?: strtolower(Str::camel($this->getName()));
+        return $this->routeNamespace ?: strtolower(Str::kebab($this->getName()));
     }
 
+    /**
+     * @return string
+     * @throws ReflectionException
+     */
     protected function getControllerNamespace()
     {
         return $this->controllerNamespace ?: $this->getPackageNamespace('Http\\Controllers\\Api');
     }
-    
+
+    /**
+     * @param $append
+     * @return string
+     * @throws ReflectionException
+     */
     protected function getPackageNamespace($append)
     {
         return (new ReflectionClass(get_class($this)))->getNamespaceName() .
@@ -70,10 +93,12 @@ abstract class ServiceProvider extends BaseServiceProvider implements ModuleCont
 
     protected function registerElements()
     {
-        $elements = Arr::wrap(func_get_args());
+        $elementClasses = Arr::wrap($this->getElements());
 
-        collect($elements)->each(function (string $element) {
-            Elements::register($element);
+        $this->app->afterResolving(Elements::class, function (Elements $elements) use ($elementClasses) {
+            foreach ($elementClasses as $element) {
+                $elements->register($element)->install();
+            }
         });
     }
 }

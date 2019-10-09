@@ -2,9 +2,11 @@
 
 namespace Click\Elemental;
 
+use Click\Elemental\Auth\ElementalGuard;
+use Click\Elemental\Auth\ElementalUserProvider;
 use Click\Elemental\Elements\Module;
-use Click\Elemental\Elements\FieldGroup;
-use Click\Elements\Facades\Elements;
+use Click\Elemental\Elements\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -19,6 +21,7 @@ class ElementalServiceProvider extends ServiceProvider
     {
         // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'elemental');
 
+        $this->registerGuard();
         $this->registerViews();
         $this->registerRoutes();
         $this->registerElements();
@@ -40,14 +43,16 @@ class ElementalServiceProvider extends ServiceProvider
         ], 'elemental.config');
 
         $this->publishes([
-            __DIR__ . '/../resources/assets' => public_path('vendor/click/elemental'),
+            __DIR__ . '/../resources/public' => public_path('vendor/click/elemental'),
         ]);
     }
 
     protected function registerElements()
     {
-//        Elements::register(Module::class);
-//        Elements::register(FieldGroup::class);
+        return [
+            User::class,
+            Module::class
+        ];
     }
 
     /**
@@ -77,7 +82,7 @@ class ElementalServiceProvider extends ServiceProvider
     {
         Route::prefix($prefix)
             ->as('elemental.')
-//            ->middleware('api')
+            ->middleware('auth:elemental')
             ->namespace($this->controllerNamespace)
             ->group(elemental_path('routes/api.php'));
     }
@@ -91,9 +96,20 @@ class ElementalServiceProvider extends ServiceProvider
     {
         Route::prefix($prefix)
             ->as('elemental.')
-//            ->middleware('web')
+            ->middleware('auth:elemental')
             ->namespace($this->controllerNamespace)
             ->group(elemental_path('routes/web.php'));
+    }
+
+    protected function registerGuard()
+    {
+        Auth::provider('elemental', function ($app, array $config) {
+            return new ElementalUserProvider();
+        });
+
+        Auth::extend('elemental', function ($app, $name, array $config) {
+            return new ElementalGuard(Auth::createUserProvider($config['provider']));
+        });
     }
 
     /**
@@ -104,6 +120,8 @@ class ElementalServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/elemental.php', 'elemental');
+
+        $this->mergeGuardConfig();
 
         $this->app->singleton('elemental', function ($app) {
             return $app->make(Elemental::class);
@@ -118,5 +136,21 @@ class ElementalServiceProvider extends ServiceProvider
     public function provides()
     {
         return ['elemental'];
+    }
+
+    protected function mergeGuardConfig()
+    {
+        $this->app['config']->set('auth.guards.elemental', [
+            'driver' => 'elemental',
+            'provider' => 'elemental',
+        ]);
+
+        $this->app['config']->set('auth.providers.elemental', [
+            'driver' => 'elemental'
+        ]);
+
+        $this->app['config']->set('auth.passwords.elemental', [
+            'provider' => 'elemental'
+        ]);
     }
 }

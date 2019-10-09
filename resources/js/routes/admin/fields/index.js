@@ -1,5 +1,5 @@
-import AdminFieldsIndexScreen from '~/views/admin/fields/AdminFieldsIndexScreen'
-import AdminFieldsEditScreen from '~/views/admin/fields/AdminFieldsEditScreen'
+import AdminFieldsIndexScreen from '~/pages/admin/fields/AdminFieldsIndexScreen'
+import AdminFieldsEditScreen from '~/pages/admin/fields/AdminFieldsEditScreen'
 
 export default [
     {

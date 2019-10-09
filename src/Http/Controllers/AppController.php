@@ -2,7 +2,6 @@
 
 namespace Click\Elemental\Http\Controllers;
 
-use File;
 use Illuminate\View\View;
 
 class AppController
@@ -28,11 +27,11 @@ class AppController
             'woff2' => 'font/woff2'
         ];
 
-        $path = elemental_path('resources/assets/' . ltrim($filename, '/'));
+        $path = elemental_path('resources/public/' . ltrim($filename, '/'));
         $ext = explode('.', $path)[1];
 
         if (file_exists($path) && array_key_exists($ext, $allowedTypes)) {
-            $content = File::get($path);
+            $content = file_get_contents($path);
             $headers = ['Content-Type' => $allowedTypes[$ext]];
 
             return response($content, 200, $headers);

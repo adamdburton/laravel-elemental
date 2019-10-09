@@ -1,4 +1,4 @@
-import AdminModulesIndexScreen from '~/views/admin/modules/AdminModulesIndexScreen'
+import AdminModulesIndexScreen from '~/pages/admin/modules/AdminModulesIndexScreen'
 import api from "~/api";
 
 export default [
