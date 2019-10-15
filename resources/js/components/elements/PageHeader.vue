@@ -6,8 +6,8 @@
             </slot>
         </div>
         <div class="flex-1 leading-relaxed">
-            <h1 class="text-lg" v-html="realTitle"></h1>
-            <div class="text-md text-gray-700 dark:text-gray-400" v-if="realDescription" v-html="realDescription"></div>
+            <h1 class="font-medium" v-html="realTitle"></h1>
+            <div class="text-gray-700 dark:text-gray-400" v-if="realDescription" v-html="realDescription"></div>
         </div>
         <div>
             <slot name="buttons"></slot>

@@ -49,8 +49,11 @@
   },
   "repositories": [
     {
-      "type": "vcs",
-      "url": "git@git.clickdigitalsolutions.co.uk:internal/elements.git"
+      "type": "path",
+      "url": "~/Packages/click/elements",
+      "options": {
+        "symlink": true
+      }
     }
   ]
 }

@@ -8,7 +8,7 @@
 Route::get('assets/{filename}')
     ->uses('AppController@asset')
     ->name('asset')
-    ->where('filename', '(fonts\/)?[a-zA-Z0-9._-]+\.(png|css|js|map|ico|ttf|woff)');
+    ->where('filename', '(fonts|js|css)?(\/)?[a-zA-Z0-9._-]+\.(png|css|js|map|ico|ttf|woff)');
 
 // Catch all for the SPA.
 

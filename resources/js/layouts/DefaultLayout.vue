@@ -1,10 +1,10 @@
 <template>
     <el-container class="h-screen">
-        <el-header class="pr-4 py-3 bg-white dark:bg-dark-dark flex items-center justify-between z-10">
+        <el-header class="text-sm pr-4 py-3 bg-white dark:bg-dark-dark flex items-center justify-between z-10">
             <div class="px-4">
-                <el-dropdown>
+                <el-dropdown :show-timeout="50">
                     <elemental-logo class="w-8" mode="square"></elemental-logo>
-                    <el-dropdown-menu slot="dropdown">
+                    <el-dropdown-menu class="text-sm" slot="dropdown">
                         <el-dropdown-item icon="el-icon-link">View Homepage</el-dropdown-item>
                         <el-dropdown-item icon="el-icon-reading" divided>View Documentation</el-dropdown-item>
                         <el-dropdown-item icon="el-icon-help">Get Help!</el-dropdown-item>
@@ -30,18 +30,17 @@
                                  prefix-icon="el-icon-search"></el-autocomplete>
             </div>
             <div>
-                <el-dropdown @command="handleAvatarDropdown" :hide-on-click="false">
+                <el-dropdown :show-timeout="50" class="text-sm" @command="handleAvatarDropdown" :hide-on-click="false">
                     <div class="flex items-center">
-                        <el-avatar size="medium" icon="el-icon-user"
-                                   src="https://lh3.googleusercontent.com/-D15IUWMvux4/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rcz8TkI4hNDuWLkxP2fDHYOfKzaDQ.CMID/s192-c/photo.jpg"></el-avatar>
+                        <el-avatar size="medium" icon="el-icon-user" src="https://clickdigitalsolutions.co.uk/assets/images/logo.png"></el-avatar>
                         <i class="el-icon-arrow-down ml-2"></i>
                     </div>
                     <el-dropdown-menu slot="dropdown">
-                        <el-dropdown-item icon="el-icon-user">View Profile</el-dropdown-item>
+                        <el-dropdown-item command="showProfile" icon="el-icon-user">View Profile</el-dropdown-item>
                         <el-dropdown-item icon="el-icon-key">Change Password</el-dropdown-item>
                         <el-dropdown-item icon="el-icon-s-operation" divided command="adminDashboard">Administration
                         </el-dropdown-item>
-                        <el-dropdown-item  command="toggleDarkMode" divided>
+                        <el-dropdown-item command="toggleDarkMode" divided>
                             <div class="flex items-center justify-between">
                                 <div>Dark Mode</div>
                                 <i class="text-lg" :class="darkMode ? 'el-icon-open' : 'el-icon-turn-off'"></i>
@@ -55,7 +54,7 @@
 
         <el-container class="flex-1">
             <el-aside width="auto" class="bg-white dark:bg-dark-dark">
-                <el-menu :collapse="true" :default-active="$route.path" router>
+                <el-menu :collapse="true" :default-active="$route.path" class="text-sm" router>
                     <el-menu-item index="/dashboard">
                         <i class="el-icon-data-line"></i>
                         <span slot="title">Dashboard</span>
@@ -91,7 +90,7 @@
                 </el-menu>
             </el-aside>
 
-            <el-main class="relative flex flex-col bg-gray-200 dark:bg-dark-light shadow-inner border-t border-l ">
+            <el-main class="relative flex flex-col bg-gray-200 dark:bg-dark-light shadow-inner border-t border-l">
                 <el-container class="absolute inset-0">
                     <router-view name="sidebar"></router-view>
                     <el-main>
@@ -103,6 +102,15 @@
                 </el-container>
             </el-main>
         </el-container>
+        <el-drawer direction="rtl" :visible.sync="profileShown" :before-close="handleProfileDrawerClose">
+            <div class="p-4 flex flex-col items-center">
+                <div class="mb-4">
+                    <el-avatar :size="96" icon="el-icon-user" src="https://clickdigitalsolutions.co.uk/assets/images/logo.png"></el-avatar>
+                </div>
+                <div class="text-2xl mb-2">Click Digital</div>
+                <div class="text-sm text-brand uppercase">Administrator</div>
+            </div>
+        </el-drawer>
     </el-container>
 </template>
 
@@ -115,7 +123,8 @@
         },
         data: () => ({
             search: '',
-            darkMode: false
+            darkMode: false,
+            profileShown: false
         }),
         methods: {
             handleAvatarDropdown(command) {
@@ -126,6 +135,8 @@
                     localStorage.setItem('mode-dark', this.darkMode ? '1' : '0');
                 } else if (command === 'adminDashboard') {
                     this.$router.push({name: 'admin.dashboard.index'});
+                } else if (command === 'showProfile') {
+                    this.profileShown = true;
                 }
             },
             handleSearchFocus(event) {
@@ -137,6 +148,9 @@
                 api.searchElements({search: queryString}).then(results => {
                     callback(results);
                 });
+            },
+            handleProfileDrawerClose(done) {
+                done();
             }
         },
         mounted() {

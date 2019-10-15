@@ -13,7 +13,7 @@
 
 @font-face {
     font-family: element-icons;
-    src: url(fonts/element-icons.woff) format("woff"), url(fonts/element-icons.ttf) format("truetype");
+    src: url(../fonts/element-icons.woff) format("woff"), url(../fonts/element-icons.ttf) format("truetype");
     font-weight: 400;
     font-style: normal
 }
@@ -1807,7 +1807,7 @@
 
 .el-dropdown-menu--medium .el-dropdown-menu__item {
     line-height: 30px;
-    padding:f 0 17px;
+    padding: 0 17px;
 }
 
 .el-dropdown-menu--medium .el-dropdown-menu__item.el-dropdown-menu__item--divided {
@@ -14495,6 +14495,7 @@
     box-sizing: border-box;
     background-color: #FFF;
     display: flex;
+    border-left-width: 1px;
     -webkit-box-orient: vertical;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -14554,7 +14555,7 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    margin-bottom: 32px;
+    margin-bottom: 10px;
     padding: 20px 20px 0
 }
 

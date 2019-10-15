@@ -32,8 +32,8 @@
                 default: () => ([])
             },
             properties: {
-                type: Object,
-                default: () => ({})
+                type: Array,
+                default: () => ([])
             }
         },
         data: () => ({

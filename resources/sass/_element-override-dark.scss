@@ -68,4 +68,8 @@ html.mode-dark {
   .el-popper[x-placement^=left] .popper__arrow::after {
     border-left-color: #1f1f1f;
   }
+
+  .el-drawer {
+    background-color: #1f1f1f;
+  }
 }

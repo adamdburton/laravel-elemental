@@ -17,12 +17,12 @@
                 </div>
                 Fields
             </router-link>
-            <div class="max-w-xs w-full py-8 flex flex-col justify-content items-center bg-white dark:bg-dark-dark hover:text-brand shadow-lg cursor-pointer">
+            <router-link  :to="{name:'admin.dashboard.editor'}" tag="div" class="max-w-xs w-full py-8 flex flex-col justify-content items-center bg-white dark:bg-dark-dark hover:text-brand shadow-lg cursor-pointer">
                 <div class="text-2xl mb-4 text-black dark:text-brand">
                     <i class="el-icon-goods"></i>
                 </div>
-                Shop
-            </div>
+                Field Layout Editor
+            </router-link>
             <div class="max-w-xs w-full py-8 flex flex-col justify-content items-center bg-white dark:bg-dark-dark hover:text-brand shadow-lg cursor-pointer">
                 <div class="text-2xl mb-4 text-black dark:text-brand">
                     <i class="el-icon-postcard"></i>

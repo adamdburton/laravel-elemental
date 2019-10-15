@@ -82,7 +82,7 @@ class ElementalServiceProvider extends ServiceProvider
     {
         Route::prefix($prefix)
             ->as('elemental.')
-            ->middleware('auth:elemental')
+//            ->middleware('auth:elemental')
             ->namespace($this->controllerNamespace)
             ->group(elemental_path('routes/api.php'));
     }
@@ -96,7 +96,7 @@ class ElementalServiceProvider extends ServiceProvider
     {
         Route::prefix($prefix)
             ->as('elemental.')
-            ->middleware('auth:elemental')
+//            ->middleware('auth:elemental')
             ->namespace($this->controllerNamespace)
             ->group(elemental_path('routes/web.php'));
     }

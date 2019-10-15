@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap" rel="stylesheet">
     <link href="{{ elemental_mix('/css/app.css') }}" rel="stylesheet">
 </head>
-<body class="bg-brand-dark text-black dark:text-white text-sm leading-normal">
+<body class="bg-brand-dark text-black dark:text-white text-base leading-normal">
 <div id="app"></div>
 <script src="{{ elemental_mix('/js/app.js') }}"></script>
 </body>
