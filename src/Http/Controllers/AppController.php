@@ -28,7 +28,8 @@ class AppController
         ];
 
         $path = elemental_path('resources/public/' . ltrim($filename, '/'));
-        $ext = explode('.', $path)[1];
+        $parts = explode('.', $path);
+        $ext = $parts[count($parts) - 1];
 
         if (file_exists($path) && array_key_exists($ext, $allowedTypes)) {
             $content = file_get_contents($path);
