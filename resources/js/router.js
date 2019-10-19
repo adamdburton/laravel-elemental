@@ -46,10 +46,7 @@ router.beforeEach((to, from, next) => {
 
 router.beforeEach((to, from, next) => {
     if (typeof to.meta.data === 'function') {
-        to.meta.data(to).then(data => {
-            to.meta.$data = data;
-            next();
-        });
+        to.meta.data(to).then(data => to.meta.$data = data).then(next);
     } else {
         next();
     }

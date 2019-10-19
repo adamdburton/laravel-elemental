@@ -1,18 +1,15 @@
 <?php
 
-namespace Click\Elemental\Elements\Categories;
+namespace Click\Elemental\Elements\Structures;
 
-use Click\Elemental\Auth\BaseUser as Element;
-use Click\Elemental\Elements\Fields\Field;
-use Click\Elemental\Elements\Fields\Layout;
-use Click\Elemental\Elements\Structures\Structure;
+use Click\Elements\Element;
 use Click\Elements\Exceptions\Property\PropertyAlreadyDefinedException;
 use Click\Elements\Exceptions\Property\PropertyKeyInvalidException;
 use Click\Elements\Exceptions\Relation\RelationTypeNotValidException;
 use Click\Elements\Schemas\ElementSchema;
 use Click\Elements\Types\RelationType;
 
-class Group extends Element
+class StructureElement extends Element
 {
     /**
      * @param ElementSchema $schema
@@ -23,8 +20,11 @@ class Group extends Element
      */
     public function getDefinition(ElementSchema $schema)
     {
-        $schema->string('name');
         $schema->relation('structure', Structure::class, RelationType::SINGLE);
-        $schema->relation('fieldLayout', Layout::class, RelationType::SINGLE);
+        $schema->relation('element', StructureElement::class, RelationType::SINGLE);
+        $schema->unsignedInteger('root');
+        $schema->unsignedInteger('lft');
+        $schema->unsignedInteger('rgt');
+        $schema->unsignedInteger('level');
     }
 }

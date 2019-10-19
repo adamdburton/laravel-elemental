@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-{{--mode-dark--}}
 <html lang="en" class="">
 <head><title>Elemental</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="api-prefix" content="{{ config('elemental.prefix') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ elemental_asset('apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ elemental_asset('favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ elemental_asset('favicon-16x16.png') }}">

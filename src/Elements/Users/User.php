@@ -23,7 +23,7 @@ class User extends Element
         $schema->string('name');
         $schema->email('email')->unique();
         $schema->string('password');
-        $schema->string('rememberToken');
+        $schema->string('rememberToken')->hidden();
 
         $schema->relation('group', Group::class, RelationType::SINGLE);
         $schema->relation('permissions', Permission::class, RelationType::MANY);

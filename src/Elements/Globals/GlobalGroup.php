@@ -1,15 +1,16 @@
 <?php
 
-namespace Click\Elemental\Elements\Fields;
+namespace Click\Elemental\Elements\Globals;
 
 use Click\Elemental\Auth\BaseUser as Element;
+use Click\Elemental\Elements\Fields\Layout;
 use Click\Elements\Exceptions\Property\PropertyAlreadyDefinedException;
 use Click\Elements\Exceptions\Property\PropertyKeyInvalidException;
 use Click\Elements\Exceptions\Relation\RelationTypeNotValidException;
 use Click\Elements\Schemas\ElementSchema;
 use Click\Elements\Types\RelationType;
 
-class Group extends Element
+class GlobalGroup extends Element
 {
     /**
      * @param ElementSchema $schema
@@ -21,6 +22,7 @@ class Group extends Element
     public function getDefinition(ElementSchema $schema)
     {
         $schema->string('name');
-        $schema->relation('fields', Field::class, RelationType::MANY);
+        $schema->string('handle');
+        $schema->relation('fieldLayout', Layout::class, RelationType::SINGLE);
     }
 }

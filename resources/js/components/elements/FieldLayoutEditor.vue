@@ -1,28 +1,28 @@
 <template>
     <div class="shadow-lg">
         <div class="p-6 border-b">
-            <div class="flex items-center mb-8">
+            <div class="flex items-center justify-between mb-8">
                 <h2 class="text-xl font-medium mr-4">Selected Fields</h2>
-                <el-button @click="handleNewTab" size="small" type="primary"><i class="el-icon-plus"></i> New Tab</el-button>
+                <el-button @click="handleNewTab" size="medium" type="primary"><i class="el-icon-plus"></i> New Tab</el-button>
             </div>
 
-            <div class="active-tabs flex mb-4">
-                <draggable v-model="activeTabs" group="tabs" class="flex" handle=".tab-reorder-handle">
+            <div class="active-tabs flex mb-4 overflow-x-auto flex-no-wrap">
+                <draggable v-model="activeTabs" group="tabs" class="flex" :emptyInsertThreshold="100">
                     <field-layout-tab v-for="tab in activeTabs" :key="tab.name" :tab="tab" :fields="fields" :active="true"/>
                 </draggable>
             </div>
         </div>
 
         <div class="p-6">
-            <div class="flex items-center mb-8">
+            <div class="flex items-center justify-between mb-8">
                 <h2 class="text-xl font-medium mr-4">Available Fields</h2>
                 <div class="w-xs">
-                    <el-input size="small" placeholder="Search..."></el-input>
+                    <el-input size="medium" placeholder="Search..."></el-input>
                 </div>
             </div>
 
-            <div class="active-tabs flex mb-4">
-                <draggable v-model="inactiveTabs" group="tabs" class="flex" handle=".tab-reorder-handle">
+            <div class="active-tabs flex mb-4 overflow-x-auto flex-no-wrap">
+                <draggable v-model="inactiveTabs" group="tabs" class="flex" :emptyInsertThreshold="100">
                     <field-layout-tab v-for="tab in inactiveTabs" v-if="tab.fields.length > 0" :key="tab.name" :tab="tab" :fields="fields" :active="false"/>
                 </draggable>
             </div>
@@ -44,26 +44,18 @@
                     fields: [1, 2]
                 },
                 {
-                    name: 'Meta',
-                    fields: [5, 3]
-                },
-                {
                     name: 'SEO',
-                    fields: [4]
+                    fields: []
                 }
             ],
             inactiveTabs: [
                 {
+                    name: 'SEO',
+                    fields: [3, 4]
+                },
+                {
                     name: 'Settings',
-                    fields: [3, 4, 5]
-                },
-                {
-                    name: 'Events',
-                    fields: [1, 2]
-                },
-                {
-                    name: 'Something',
-                    fields: [4]
+                    fields: [5]
                 }
             ],
             fields: [
@@ -99,7 +91,7 @@
                 this.$prompt('Label', 'Add Tab').then(({ value }) => {
                     this.activeTabs.push({
                         name: value,
-                        fields: [5, 3]
+                        fields: []
                     })
                 });
             }

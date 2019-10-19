@@ -22,7 +22,7 @@ class Category extends Element
     public function getDefinition(ElementSchema $schema)
     {
         $schema->string('name');
-        $schema->relation('categoryGroup', Group::class, RelationType::SINGLE);
+        $schema->relation('categoryGroup', CategoryGroup::class, RelationType::SINGLE);
         $schema->relation('parent', Category::class, RelationType::SINGLE);
     }
 }
