@@ -9,7 +9,7 @@ class AppController
     /**
      * @return View
      */
-    public function __invoke()
+    public function app()
     {
         return view('elemental::app');
     }

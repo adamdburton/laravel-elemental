@@ -2,12 +2,14 @@ import util from './util';
 import auth from './auth';
 
 import dashboard from './dashboard';
+import assets from './assets';
 import content from './content';
 import admin from './admin';
 
 const routes = [
     ...mapParents([
         ...dashboard,
+        ...assets,
         ...auth,
         ...util,
         ...content,

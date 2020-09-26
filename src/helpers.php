@@ -24,7 +24,7 @@ if (!function_exists('elemental_asset')) {
      */
     function elemental_asset($path = '')
     {
-        return route('elemental.asset', ltrim($path, '/'));
+        return route('elemental.app.asset', ltrim($path, '/'));
     }
 }
 

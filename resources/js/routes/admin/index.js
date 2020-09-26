@@ -1,6 +1,7 @@
 import dashboard from './dashboard';
 import modules from './modules';
 import fields from './fields';
+import sections from './sections';
 
 export default [
     {
@@ -13,6 +14,7 @@ export default [
             ...dashboard,
             ...modules,
             ...fields,
+            ...sections
         ]
     }
 ]

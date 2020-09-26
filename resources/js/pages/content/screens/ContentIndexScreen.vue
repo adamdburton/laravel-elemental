@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="p-4">
         <template slot="sidebar">
             <el-aside :width="null" class="max-w-xs w-full bg-white dark:bg-dark-dark border-r p-4">
                 <el-menu default-active="2">

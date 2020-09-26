@@ -25,12 +25,11 @@ class ElementController
      * @param Request $request
      * @param string $type
      * @return AnonymousResourceCollection
-     * @throws ElementNotInstalledException
      * @throws ElementNotRegisteredException
      */
     public function index(Request $request, string $type)
     {
-        $elements = $this->elements->factory($type)->all();
+        $elements = $this->elements->getElementDefinition($type)->factory()->all();
 
         return ElementResource::collection($elements);
     }
@@ -44,7 +43,7 @@ class ElementController
      */
     public function show(Request $request, string $type, int $id)
     {
-        $element = $this->elements->factory($type)->find($id);
+        $element = $this->elements->getElementDefinition($type)->factory()->find($id);
 
         return new ElementResource($element);
     }

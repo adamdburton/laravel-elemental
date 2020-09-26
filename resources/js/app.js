@@ -4,11 +4,11 @@ import Vue from 'vue';
 import router from './router';
 import store from './store';
 
-import App from './components/App';
+import Elemental from './components/Elemental';
 
 window.app = new Vue({
     el: '#app',
-    render: h => h(App),
+    render: h => h(Elemental),
     router,
     store
 });

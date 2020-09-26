@@ -1,6 +1,6 @@
 <?php
 
-namespace Click\Elemental\Fields;
+namespace Click\Elemental\FieldTypes;
 
 use Click\Elemental\Field;
 

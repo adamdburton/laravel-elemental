@@ -1,5 +1,5 @@
 <template>
-    <div class="border-2 px-4 py-2 cursor-move flex items-center justify-between my-4 bg-white dark:bg-dark-dark" :class="active ? 'border-solid' : 'border-dashed'">
+    <div class="border px-4 py-2 cursor-move flex items-center justify-between my-4 bg-white dark:bg-dark-dark" :class="active ? 'border-solid' : 'border-dashed'">
         <el-tooltip>
             <div slot="content" class="font-mono">{{ field.slug }}</div>
             <div class="mr-2" v-html="field.name"></div>

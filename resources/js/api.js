@@ -2,6 +2,18 @@ const axios = require('axios');
 
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+function randomly(success, failure) {
+    return new Promise((resolve, reject) => {
+        let chance = Math.random() >= 0.5;
+
+        if (chance) {
+            success(resolve);
+        } else {
+            failure(reject)
+        }
+    });
+}
+
 class Api {
     authenticate() {
         return randomly(resolve => resolve({

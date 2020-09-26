@@ -4,8 +4,9 @@ namespace Click\Elemental;
 
 use Click\Elemental\Auth\ElementalGuard;
 use Click\Elemental\Auth\ElementalUserProvider;
-use Click\Elemental\Elements\Module;
-use Click\Elemental\Elements\User;
+use Click\Elemental\Elements\Entries\Section;
+use Click\Elemental\Elements\Modules\Module;
+use Click\Elemental\Elements\Users\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
@@ -24,7 +25,6 @@ class ElementalServiceProvider extends ServiceProvider
         $this->registerGuard();
         $this->registerViews();
         $this->registerRoutes();
-        $this->registerElements();
 
         if ($this->app->runningInConsole()) {
             $this->bootForConsole();
@@ -47,14 +47,6 @@ class ElementalServiceProvider extends ServiceProvider
         ]);
     }
 
-    protected function registerElements()
-    {
-        return [
-            User::class,
-            Module::class
-        ];
-    }
-
     /**
      * Registers views
      */
@@ -68,20 +60,34 @@ class ElementalServiceProvider extends ServiceProvider
      */
     protected function registerRoutes()
     {
+        $this->registerAppRoutes();
+        $this->registerApiRoutes();
+        $this->registerWebRoutes();
+    }
+
+    /**
+     * Registers app routes.
+     */
+    protected function registerAppRoutes()
+    {
         $prefix = config('elemental.prefix');
 
-        $this->registerApiRoutes($prefix);
-        $this->registerWebRoutes($prefix);
+        Route::prefix($prefix)
+            ->as('elemental.app.')
+//            ->middleware('auth:elemental')
+            ->namespace($this->controllerNamespace)
+            ->group(elemental_path('routes/app.php'));
     }
 
     /**
      * Registers api routes.
-     * @param $prefix
      */
-    protected function registerApiRoutes($prefix)
+    protected function registerApiRoutes()
     {
-        Route::prefix($prefix)
-            ->as('elemental.')
+        $prefix = config('elemental.prefix');
+
+        Route::prefix($prefix . '/api')
+            ->as('elemental.api.')
 //            ->middleware('auth:elemental')
             ->namespace($this->controllerNamespace)
             ->group(elemental_path('routes/api.php'));
@@ -90,12 +96,12 @@ class ElementalServiceProvider extends ServiceProvider
     /**
      * Registers web routes.
      *
-     * @param $prefix
      */
-    protected function registerWebRoutes($prefix)
+    protected function registerWebRoutes()
     {
-        Route::prefix($prefix)
-            ->as('elemental.')
+        $prefix = config('elemental.prefix');
+
+        Route::as('elemental.')
 //            ->middleware('auth:elemental')
             ->namespace($this->controllerNamespace)
             ->group(elemental_path('routes/web.php'));

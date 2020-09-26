@@ -93,18 +93,20 @@
             <el-main class="relative flex flex-col bg-gray-200 dark:bg-dark-light shadow-inner border-t border-l">
                 <el-container class="absolute inset-0">
                     <router-view name="sidebar"></router-view>
-                    <el-main>
-                        <page-header></page-header>
-                        <div class="p-4">
+                    <el-container>
+                        <el-header :height="null">
+                            <page-header></page-header>
+                        </el-header>
+                        <el-main class="flex-col">
                             <slot></slot>
-                        </div>
-                    </el-main>
+                        </el-main>
+                    </el-container>
                 </el-container>
             </el-main>
         </el-container>
         <el-drawer direction="rtl" :visible.sync="profileShown" :before-close="handleProfileDrawerClose">
             <div class="p-4 flex flex-col items-center">
-                <div class="mb-4">
+                <div class="mb-12">
                     <el-avatar :size="96" icon="el-icon-user" src="https://clickdigitalsolutions.co.uk/assets/images/logo.png"></el-avatar>
                 </div>
                 <div class="text-2xl mb-2">Click Digital</div>

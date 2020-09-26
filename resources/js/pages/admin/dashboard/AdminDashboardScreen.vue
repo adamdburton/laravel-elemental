@@ -5,6 +5,12 @@
         </template>
 
         <div class="flex justify-between">
+            <router-link :to="{name:'admin.sections.index'}" tag="div" class="max-w-xs w-full py-8 flex flex-col justify-content items-center bg-white dark:bg-dark-dark hover:text-brand shadow-lg cursor-pointer">
+                <div class="text-2xl mb-4 text-black dark:text-brand">
+                    <i class="el-icon-notebook-2"></i>
+                </div>
+                Sections
+            </router-link>
             <router-link :to="{name:'admin.modules.index'}" tag="div" class="max-w-xs w-full py-8 flex flex-col justify-content items-center bg-white dark:bg-dark-dark hover:text-brand shadow-lg cursor-pointer">
                 <div class="text-2xl mb-4 text-black dark:text-brand">
                     <i class="el-icon-box"></i>

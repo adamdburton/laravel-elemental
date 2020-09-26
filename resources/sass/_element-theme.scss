@@ -2857,7 +2857,8 @@
     white-space: nowrap;
     overflow: hidden;
     -moz-user-select: none;
-    user-select: none
+    user-select: none;
+    font-weight: normal;
 }
 
 .el-table th div {
@@ -4682,10 +4683,10 @@
 
 .el-form-item {
     margin-bottom: 22px;
+}
 
-    &:last-child {
-        margin-bottom: 0;
-    }
+.el-form-item:last-child {
+    margin-bottom: 0;
 }
 
 .el-form-item::after, .el-form-item::before {
@@ -14594,7 +14595,7 @@
 }
 
 .el-drawer__container {
-    position: relative
+    position: fixed;
 }
 
 .el-drawer-fade-enter-active {

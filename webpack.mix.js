@@ -11,4 +11,7 @@ mix.copy('node_modules/element-ui/lib/theme-chalk/fonts', 'resources/public/font
 mix.js('resources/js/app.js', 'resources/public/js')
     .sass('resources/sass/app.scss', 'resources/public/css')
     .tailwind()
-    .version();
+    .version()
+    .browserSync({
+        proxy: 'laravel-6.test'
+    });

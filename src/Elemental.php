@@ -2,20 +2,18 @@
 
 namespace Click\Elemental;
 
-use Click\Elemental\Http\Resources\PropertyResource;
-use Click\Elements\Facades\Elements;
+use Click\Elemental\Content\Elements\Entries\Entry;
+use Click\Elemental\Content\Elements\Entries\Section;
 
 class Elemental
 {
-    protected $modules = [];
-
-    public function __construct()
+    public function sections()
     {
-
+        return Section::query();
     }
 
-    public function registerModule(ServiceProvider $module)
+    public function entries()
     {
-        $this->modules[$module->getAlias()] = $module;
+        return Entry::query();
     }
 }

@@ -1,0 +1,1 @@
+C:37:"PHPUnit\Runner\DefaultTestResultCache":318:{a:2:{s:7:"defects";a:2:{s:55:"Click\Elemental\Tests\ElementalTest::test_routes_exists";i:4;s:54:"Click\Elemental\Tests\ElementalTest::test_app_response";i:4;}s:5:"times";a:2:{s:55:"Click\Elemental\Tests\ElementalTest::test_routes_exists";d:0.307;s:54:"Click\Elemental\Tests\ElementalTest::test_app_response";d:0.039;}}}

@@ -1,37 +1,27 @@
 <template>
-    <section class="p-4">
-        <el-form label-position="left" label-width="160px" ref="form" :model="element.attributes" :rules="rules"
-                 :status-icon="true">
-            <el-tabs>
-                <el-tab-pane label="Content">
-                    <div class="bg-white dark:bg-dark-dark">
-                        <div v-for="(config, property) in element.properties" :key="property"
-                             class="p-6 border-b">
-                            <el-form-item :label="config.label" :prop="property">
-                                <component :is="componentForType(config)"
-                                           v-bind="attributesForType(config)"
-                                           v-model="element.attributes[property]"
-                                ></component>
-                            </el-form-item>
-                        </div>
-                    </div>
-                </el-tab-pane>
-                <el-tab-pane label="Tab 2">
-                    <div class="bg-white dark:bg-dark-dark">
-                        hello
-                    </div>
-                </el-tab-pane>
-            </el-tabs>
+    <section>
+        <div class="bg-white dark:bg-dark-dark">
+            <el-form label-position="left" label-width="160px" ref="form" :model="element.attributes" :rules="rules"
+                     :status-icon="true">
+                <div v-for="(config, property) in element.properties" :key="property"
+                     class="p-6 border-b">
+                    <el-form-item :label="config.label" :prop="property">
+                        <component :is="componentForType(config)"
+                                   v-bind="attributesForType(config)"
+                                   v-model="element.attributes[property]"
+                        ></component>
+                    </el-form-item>
+                </div>
+            </el-form>
 
-        </el-form>
-
-        <el-drawer
-                title="Content"
-                :visible="editingElementType"
-                @close="editingElementType = false"
-                direction="rtl"
-                size="30%">
-        </el-drawer>
+            <el-drawer
+                    title="Content"
+                    :visible="editingElementType"
+                    @close="editingElementType = false"
+                    direction="rtl"
+                    size="30%">
+            </el-drawer>
+        </div>
 
         <template slot="title">
             <page-header></page-header>
@@ -76,7 +66,9 @@
 
         methods: {
             componentForType(config) {
-                if (config.type === 'string' || config.type === 'text') {
+                if (config.type === 'string') {
+                    return 'el-input';
+                } else if (config.type === 'text') {
                     return 'el-input';
                 }
             },
